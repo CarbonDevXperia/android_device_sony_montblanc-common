@@ -45,10 +45,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
         make_ext4fs \
         setup_fs \
-        e2fsck \
-	mkfs.f2fs \
-	fsck.f2fs \
-	fibmap.f2fs 
+        e2fsck 
    
 # libtinyalsa & audio.usb.default
 PRODUCT_PACKAGES += \
@@ -73,8 +70,7 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    PhotoTable
+    com.android.future.usb.accessory
 
 # BlueZ
 PRODUCT_PACKAGES += \
