@@ -7,6 +7,9 @@ $(call inherit-product, hardware/ste-sony/common.mk)
 # Inherit from the vendor common montblanc definitions
 $(call inherit-product-if-exists, vendor/sony/montblanc-common/montblanc-common-vendor.mk)
 
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+
 # Common montblanc headers
 TARGET_SPECIFIC_HEADER_PATH := device/sony/montblanc-common/include
 
@@ -39,6 +42,7 @@ PRODUCT_COPY_FILES += \
         device/sony/montblanc-common/config/hostapd.conf:system/etc/wifi/hostapd.conf \
         device/sony/montblanc-common/config/01stesetup:system/etc/init.d/01stesetup \
         device/sony/montblanc-common/config/10wireless:system/etc/init.d/10wireless \
+        device/sony/montblanc-common/config/98netflix:system/etc/init.d/98netflix \
         device/sony/montblanc-common/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
         
 # Filesystem management tools
@@ -52,6 +56,7 @@ PRODUCT_PACKAGES += \
        tinyalsa \
        libtinyalsa \
        audio_policy.default \
+       libaudio-resampler \
        audio.usb.default
        
 # Torch
@@ -81,6 +86,7 @@ PRODUCT_PACKAGES += \
         btmon \
         btproxy \
         audio.a2dp.default \
+        audio.sco.default \
         l2test \
         bluetoothd-snoop \
         init.bluetooth.rc \
@@ -100,7 +106,7 @@ PRODUCT_COPY_FILES += \
 
 # Post recovery script
 PRODUCT_COPY_FILES += \
-        device/sony/montblanc-common/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
+        device/sony/montblanc-common/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
